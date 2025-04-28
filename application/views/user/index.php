@@ -35,7 +35,7 @@
                             <td>
                                 
  <!-- Edit Button: Redirects to the edit page for the selected user -->
-  <?php echo "123"; ?>
+  <?php echo "master"; ?>
  <a href="<?= site_url('user/edit/' . $row['id']) ?>" class="btn btn-sm btn-primary">Edit</a>
 
  <!-- Delete Button: Links to the delete function with confirmation before deleting the user -->
