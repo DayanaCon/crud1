@@ -35,41 +35,41 @@
                             <td>
                                 
  <!-- Edit Button: Redirects to the edit page for the selected user -->
-  <?php echo "master"; ?>
+  <?php echo "dev1-042825"; ?>
  <a href="<?= site_url('user/edit/' . $row['id']) ?>" class="btn btn-sm btn-primary">Edit</a>
 
  <!-- Delete Button: Links to the delete function with confirmation before deleting the user -->
 
-<a href="<?= base_url('user/delete/' . $row['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-sm btn-danger">Delete</a>
-</td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-                <?php
-                if ($this->session->flashdata('success')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        Successfully Added
-                    </div>
-                <?php }
-                ?>
-                <?php
-                if ($this->session->flashdata('deleted')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        Successfully Deleted
-                    </div>
-                <?php }
-                ?>
-                 <?php
-                if ($this->session->flashdata('error')) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        Failed!
-                    </div>
-                <?php }
-                ?>
+    <a href="<?= base_url('user/delete/' . $row['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    if ($this->session->flashdata('success')) { ?>
+                        <div class="alert alert-success" role="alert">
+                            Successfully Added
+                        </div>
+                    <?php }
+                    ?>
+                    <?php
+                    if ($this->session->flashdata('deleted')) { ?>
+                        <div class="alert alert-success" role="alert">
+                            Successfully Deleted
+                        </div>
+                    <?php }
+                    ?>
+                    <?php
+                    if ($this->session->flashdata('error')) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            Failed!
+                        </div>
+                    <?php }
+                    ?>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 <?php $this->load->view('includes/footer'); ?>
