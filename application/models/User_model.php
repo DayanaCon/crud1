@@ -5,7 +5,7 @@ class User_model extends CI_Model
 // Insert a new user into the database
     function insertUser($data)
     {
-// Insert the data into the 'users' table
+        // Insert the data into the 'users' table
         $this->db->insert('users',$data);
         if ($this->db->affected_rows() >= 0) {
             return true; 
@@ -13,7 +13,7 @@ class User_model extends CI_Model
             return false; 
         }
     }
-
+    
     function getUsers()
     {
         $query = $this->db->get('users');
@@ -22,10 +22,12 @@ class User_model extends CI_Model
 // Retrieve a single user based on the provided user ID
     function getUser($id)
     {
+        
         $this->db->where('id',$id);
         $query=$this->db->get('users');
         return $query->row();
     }
+
  // Update an existing user's information
     function updateUser($data,$id)
     {
@@ -37,7 +39,7 @@ class User_model extends CI_Model
             return false; 
         }
     }
-// Delete a user based on the provided user ID
+    // Delete a user based on the provided user ID
     function deleteUser($id)
     {
         $this->db->where('id',$id);
@@ -49,4 +51,13 @@ class User_model extends CI_Model
             return false; 
         }
     }
+        public function get_vehicles_expiring_soon() {
+        $one_month_later = date('Y-m-d', strtotime('+1 month'));
+        $today = date('Y-m-d');
+
+        $this->db->where('registration_expiry_date <=', $one_month_later);
+        $this->db->where('registration_expiry_date >=', $today);
+        return $this->db->get('vehicles')->result();
+    }
+
 }

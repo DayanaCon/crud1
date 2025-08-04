@@ -2,12 +2,34 @@
 $this->load->view('includes/header');?>
 
 <!-- Main container for the Edit User page -->
-
+   
     <div class= "container">
     <div  class ="row">
     <div class="card" style="width: 50rem;">
-      <div class="card-body">
-      <h5 class="card-title">Update User</h5>  
+    <div class="card-body">
+    <h5 class="card-title">Update User</h5>  
+
+  <!-- Form to update the user information -->    
+      <form method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>user/edit/<?=$id?>">
+      <div class="d-flex justify-content-start">
+    <div class="panel mr-20">
+        <label>Upload Photo</label>
+        <div class="card" style="width: 18rem;">
+            <div class="p-3">
+                <input type="file" name="photo" class="form-control">
+            </div>
+        </div>
+    </div>
+    <!-- Upload Resume -->
+    <div class="panel">
+        <label for="resume">Upload Resume</label>
+        <div class="card" style="width: 18rem;">
+            <div class="p-3">
+                <input type="file" name="attachment" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
                  <?php
                 if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success" role="alert">
@@ -15,7 +37,6 @@ $this->load->view('includes/header');?>
                     </div>
                 <?php }
                 ?>
-
 <!-- Flash messages to indicate success or failure -->
                  <?php
                 if ($this->session->flashdata('error')) { ?>
@@ -24,31 +45,39 @@ $this->load->view('includes/header');?>
                     </div>
                 <?php }
                 ?>
-<!-- Form to update the user information -->
-
-      <form method="post" action="<?= base_url() ?>user/edit/<?=$id?>">
-
 <!-- Username input field -->
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" placeholder="Username" value="<?=$user->username?>" class="form-control" id="username" >             
+                <input type="text" name="username" placeholder="Username" 
+                value="<?php echo $user->username?>" 
+                class="form-control" id="username" >             
             </div>
 
 <!-- Email input field -->
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email"class="form-control" name = "email" id="email"  value="<?=$user->email?>"placeholder="Email" aria-describedby="emailHelp">
+                <input type="email"class="form-control" name = "email" 
+                id="email"  
+                value="<?php echo $user->email?>"placeholder="Email" aria-describedby="emailHelp">
             </div>
 <!-- Mobile number input field -->
             <div class="mb-3">
                 <label for="mobile" class="form-label">Mobile</label>
-                <input type="text" maxlength= "10" class="form-control" name = "mobile" value="<?=$user->mobile?>" placeholder="Mobile" id="mobile">
+                <input type="text" maxlength= "10" 
+                class="form-control" 
+                name = "mobile" 
+                value="<?php echo $user->mobile?>" 
+                placeholder="Mobile" 
+                id="mobile">
             </div>
-
 <!-- Address input field -->
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <input type="text" name = "address" placeholder="Address" value="<?=$user->address?>" class="form-control" id="address">
+                <input type="text" 
+                name = "address" 
+                placeholder="Address" 
+                value="<?php echo $user->address?>" 
+                class="form-control" id="address">
             </div>
 
 <!-- Created At field for date and time -->
@@ -59,7 +88,7 @@ $this->load->view('includes/header');?>
            class="form-control" 
            name="created_at" 
            id="created_at" 
-        value="<?= isset($user->created_at) ? date('Y-m-d\TH:i', strtotime($user->created_at)) : '' ?>">
+        value="<?php echo isset($user->created_at) ? date('Y-m-d\TH:i', strtotime($user->created_at)) : '' ?>">
      </div>
 <!-- Created By field for the name of the person who created the record -->
     <div class="mb-3">
