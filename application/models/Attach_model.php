@@ -22,6 +22,7 @@ class Attach_model extends CI_Model
     }
     public function insertAttachment($data) {
         // Use the correct database connection ($this->attachments_db)
+        // code by diana consulta
         return $this->attachments_db->insert('lists', $data);
     }
     public function attach_view()
